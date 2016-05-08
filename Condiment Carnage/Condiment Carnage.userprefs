@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Resources\Scripts\GameLoad.cs">
+    <Files>
+      <File FileName="Assets\Resources\Scripts\GameLoad.cs" Line="40" Column="130" />
+      <File FileName="Assets\Resources\Scripts\NotGangBeastsMovement.cs" Line="40" Column="14" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
