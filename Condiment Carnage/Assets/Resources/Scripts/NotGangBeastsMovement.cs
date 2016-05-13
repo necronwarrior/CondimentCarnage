@@ -17,28 +17,16 @@ public class NotGangBeastsMovement : MonoBehaviour {
     void Start () {
         forwardxz = GetComponent<Rigidbody>().transform.up;
 		PlayerRB = GetComponent<Rigidbody> ();
+
         OneJump = false;
+
+		string[] getPlayer = transform.name.Split (':');
+		playerIndex = (PlayerIndex)int.Parse(getPlayer[1]);
     }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 
-        // Find a PlayerIndex, for a single player game
-        // Will find the first controller that is connected ans use it
-        if (!playerIndexSet || !prevState.IsConnected)
-        {
-            for (int i = 0; i < 4; ++i)
-            {
-                PlayerIndex testPlayerIndex = (PlayerIndex)i;
-                GamePadState testState = GamePad.GetState(testPlayerIndex);
-                if (testState.IsConnected)
-                {
-                    Debug.Log(string.Format("GamePad found {0}", testPlayerIndex));
-                    playerIndex = testPlayerIndex;
-                    playerIndexSet = true;
-                }
-            }
-        }
 
                 prevState = state;
         state = GamePad.GetState(playerIndex);

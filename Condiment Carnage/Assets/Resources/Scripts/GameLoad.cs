@@ -12,9 +12,11 @@ public class GameLoad : MonoBehaviour {
 	List<GameObject> playerUI; //UI for indivitual players
 
 	GameObject UICanvas;// the UICanvas for displaying information to the player
-
+	Object Players; //the instansiation of the players
+	GameObject NewPlayer;
 	// Use this for initialization
 	void Start () {
+		Players = Resources.Load ("ObjectPrefabs/Cylinder");
 
 		UICanvas = GameObject.Find ("UI_Canvas"); //find the games UI
 
@@ -37,10 +39,34 @@ public class GameLoad : MonoBehaviour {
 			{
 				playerIndex.Add(testPlayerIndex); //add connected players to the list
 				//playerUI[i].enabled = true;
-				playerUI[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(UICanvas.GetComponent<RectTransform>().rect.xMax*0.8f, 
-				                                                                         UICanvas.GetComponent<RectTransform>().rect.yMax*0.8f,
-				                                                                         0.0f);
+				
 				playerUI[i].GetComponent<Image>().enabled = true;
+
+				NewPlayer = (GameObject)Instantiate(Players);
+				NewPlayer.name = ("Player:"+i);
+				switch(i){
+				case 0: NewPlayer.transform.position = new Vector3(5.0f,0.0f,5.0f);
+				playerUI[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(UICanvas.GetComponent<RectTransform>().rect.xMax, 
+				                                                                         UICanvas.GetComponent<RectTransform>().rect.yMax,
+				                                                                         0.0f);
+					break;
+				case 1: NewPlayer.transform.position = new Vector3(-5.0f,0.0f,5.0f);
+				playerUI[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(UICanvas.GetComponent<RectTransform>().rect.xMin, 
+				                                                                         UICanvas.GetComponent<RectTransform>().rect.yMax,
+				                                                                         0.0f);
+					break;
+				case 2: NewPlayer.transform.position = new Vector3(5.0f,0.0f,-5.0f);
+				playerUI[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(UICanvas.GetComponent<RectTransform>().rect.xMax, 
+				                                                                         UICanvas.GetComponent<RectTransform>().rect.yMin,
+				                                                                         0.0f);
+					break;
+				case 3: NewPlayer.transform.position = new Vector3(-5.0f,0.0f,-5.0f);
+				playerUI[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(UICanvas.GetComponent<RectTransform>().rect.xMin, 
+				                                                                         UICanvas.GetComponent<RectTransform>().rect.yMin,
+				                                                                         0.0f);
+					break;
+						default: break;
+					};
 			}
 		}
 	}
