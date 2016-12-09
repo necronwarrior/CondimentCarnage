@@ -16,7 +16,9 @@ public class NotGangBeastsMovement : MonoBehaviour {
     // Use this for initialization
     void Start () {
         forwardxz = GetComponent<Rigidbody>().transform.up;
-		PlayerRB = GetComponent<Rigidbody> ();
+		
+	//forwardxz.y = 0;
+		PlayerRB = this.GetComponent<Rigidbody> ();
 
         OneJump = false;
 
@@ -61,14 +63,11 @@ public class NotGangBeastsMovement : MonoBehaviour {
             OneJump = true;
         }else
         {
-           // if(PrevInAir != transform.position.y){
-                OneJump = false ;
-            //}
+            OneJump = false ;
         }
 
 
-		forwardxz.y = 0;
-		PlayerRB.transform.up = Vector3.Lerp(Vector3.up, forwardxz, Time.deltaTime);
+		PlayerRB.transform.up = Vector3.Lerp(Vector3.up, forwardxz, Time.fixedDeltaTime);
         PrevInAir = transform.position.y;
     }
 }
